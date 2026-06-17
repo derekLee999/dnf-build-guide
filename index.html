@@ -307,7 +307,7 @@
 
         .skill-input-group textarea {
             width: 100%;
-            height: 100px;
+            height: 150px;
             padding: 12px;
             border: 2px solid rgba(0, 153, 255, 0.3);
             border-radius: 10px;
@@ -315,7 +315,7 @@
             color: #fff;
             font-family: monospace;
             font-size: 12px;
-            resize: vertical;
+            resize: none;
         }
 
         .skill-input-group textarea:focus {
@@ -421,7 +421,7 @@
             <h2 class="modal-title" id="modalTitle"></h2>
 
             <div class="skill-input-group">
-                <label for="skillPoints">技能加点（最多500字符）</label>
+                <label for="skillPoints">技能加点</label>
                 <textarea id="skillPoints" maxlength="500" placeholder="在此粘贴技能加点..."></textarea>
             </div>
 
@@ -610,9 +610,10 @@
                                 </div>
                             </div>
                             <div class="sub-class-list">
-                                <div class="no-sub-class-card">
-                                    <button class="add-skill-btn" onclick="openSkillModal('${cls.baseName}', '${cls.gender}', '${cls.baseName}')">
-                                        ${hasSkill ? '✏️ 编辑技能加点' : ' 添加技能加点'}
+                                <div class="sub-class-item" onclick="copySubClassSkill('${cls.baseName}', '${cls.gender}', '${cls.baseName}')">
+                                    <span class="sub-class-name">${cls.baseName}</span>
+                                    <button class="skill-points-btn" onclick="event.stopPropagation(); openSkillModal('${cls.baseName}', '${cls.gender}', '${cls.baseName}')">
+                                        ${hasSkill ? '✏️ 编辑' : ' 添加'}
                                     </button>
                                 </div>
                             </div>
