@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DNF 职业技能加点配置</title>
-    <link rel="icon" type="image/jpeg" href="狂战士.jpeg">
+    <link rel="icon" type="image/jpeg" href="images/狂战士.jpeg">
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Microsoft YaHei', sans-serif;
-            background: url('bg.jpg') center center no-repeat fixed;
+            background: url('images/bg.jpg') center center no-repeat fixed;
             background-size: cover;
             min-height: 100vh;
             color: #fff;
@@ -608,10 +608,11 @@
                 if (cls.baseName === '黑暗武士' || cls.baseName === '缔造者') {
                     const key = getKey(cls.baseName, cls.gender, cls.baseName);
                     const hasSkill = skillPointsData[key];
+                    const iconImg = cls.baseName === '黑暗武士' ? '<img src="images/heianwushi.png" alt="黑暗武士">' : '<img src="images/dizaozhe.png" alt="缔造者">';
                     return `
                         <div class="class-card">
                             <div class="class-header">
-                                <div class="class-icon">${cls.baseName === '鬼剑士' && cls.gender === '男' ? '<img src="guijianshin.png" alt="男鬼剑士">' : cls.baseName === '鬼剑士' && cls.gender === '女' ? '<img src="guijianshinv.png" alt="女鬼剑士">' : cls.gender === '男' ? '♂' : cls.gender === '女' ? '♀' : ''}</div>
+                                <div class="class-icon">${iconImg}</div>
                                 <div class="class-info">
                                     <h3>${cls.baseName}${cls.gender !== '-' ? `<span class="gender-text">（${cls.gender}）</span>` : ''}</h3>
                                 </div>
@@ -628,11 +629,38 @@
                     `;
                 }
 
-                // 普通职业（有转职）
+                // 普通职业（有转职）- 根据职业名显示对应图标
+                let iconHtml = '';
+                if (cls.baseName === '鬼剑士') {
+                    iconHtml = cls.gender === '男' ? '<img src="images/guijianshin.png" alt="男鬼剑士">' : '<img src="images/guijianshinv.png" alt="女鬼剑士">';
+                } else if (cls.baseName === '格斗家') {
+                    iconHtml = cls.gender === '男' ? '<img src="images/gedoujian.png" alt="男格斗家">' : '<img src="images/gedoujianv.png" alt="女格斗家">';
+                } else if (cls.baseName === '神枪手') {
+                    iconHtml = cls.gender === '男' ? '<img src="images/shenqiangshoun.png" alt="男神枪手">' : '<img src="images/shenqiangshounv.png" alt="女神枪手">';
+                } else if (cls.baseName === '魔法师') {
+                    iconHtml = cls.gender === '男' ? '<img src="images/mofashin.png" alt="男魔法师">' : '<img src="images/mofashinv.png" alt="女魔法师">';
+                } else if (cls.baseName === '光职者') {
+                    iconHtml = cls.gender === '男' ? '<img src="images/guangzhizhen.png" alt="男光职者">' : '<img src="images/guangzhizhenv.png" alt="女光职者">';
+                } else if (cls.baseName === '弓箭手') {
+                    iconHtml = '<img src="images/gongjianshou.png" alt="弓箭手">';
+                } else if (cls.baseName === '暗夜使者') {
+                    iconHtml = '<img src="images/anyeshizhe.png" alt="暗夜使者">';
+                } else if (cls.baseName === '守护者') {
+                    iconHtml = '<img src="images/shouhuzhe.png" alt="守护者">';
+                } else if (cls.baseName === '魔枪士') {
+                    iconHtml = '<img src="images/moqiangshi.png" alt="魔枪士">';
+                } else if (cls.baseName === '枪剑士') {
+                    iconHtml = '<img src="images/qiangjianshi.png" alt="枪剑士">';
+                } else if (cls.baseName === '帝国骑士') {
+                    iconHtml = '<img src="images/diguoqishi.png" alt="帝国骑士">';
+                } else {
+                    iconHtml = cls.gender === '男' ? '' : cls.gender === '女' ? '♀' : '';
+                }
+
                 return `
                     <div class="class-card">
                         <div class="class-header">
-                            <div class="class-icon">${cls.gender === '男' ? '♂' : cls.gender === '女' ? '♀' : '⚔'}</div>
+                            <div class="class-icon">${iconHtml}</div>
                             <div class="class-info">
                                 <h3>${cls.baseName}${cls.gender !== '-' ? `<span class="gender-text">（${cls.gender}）</span>` : ''}</h3>
                             </div>
