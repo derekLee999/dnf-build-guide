@@ -406,7 +406,7 @@
         <h1> DNF 职业技能加点配置</h1>
 
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="搜索职业或转职...">
+            <input type="text" id="searchInput" maxlength="10" placeholder="搜索职业或转职...">
         </div>
 
         <div class="base-class-tabs" id="baseClassTabs"></div>
@@ -421,8 +421,8 @@
             <h2 class="modal-title" id="modalTitle"></h2>
 
             <div class="skill-input-group">
-                <label for="skillPoints">技能加点</label>
-                <textarea id="skillPoints" placeholder="在此粘贴技能加点..."></textarea>
+                <label for="skillPoints">技能加点（最多500字符）</label>
+                <textarea id="skillPoints" maxlength="500" placeholder="在此粘贴技能加点..."></textarea>
             </div>
 
             <div class="btn-group">
