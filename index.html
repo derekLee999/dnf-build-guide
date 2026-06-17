@@ -145,6 +145,13 @@
             justify-content: center;
             font-size: 24px;
             border: 2px solid rgba(0, 212, 255, 0.5);
+            overflow: hidden;
+        }
+
+        .class-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .class-info h3 {
@@ -604,7 +611,7 @@
                     return `
                         <div class="class-card">
                             <div class="class-header">
-                                <div class="class-icon">${cls.gender === '男' ? '♂' : cls.gender === '女' ? '♀' : '⚔'}</div>
+                                <div class="class-icon">${cls.baseName === '鬼剑士' && cls.gender === '男' ? '<img src="guijianshin.png" alt="男鬼剑士">' : cls.baseName === '鬼剑士' && cls.gender === '女' ? '<img src="guijianshinv.png" alt="女鬼剑士">' : cls.gender === '男' ? '♂' : cls.gender === '女' ? '♀' : ''}</div>
                                 <div class="class-info">
                                     <h3>${cls.baseName}${cls.gender !== '-' ? `<span class="gender-text">（${cls.gender}）</span>` : ''}</h3>
                                 </div>
